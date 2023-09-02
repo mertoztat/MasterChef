@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { View, Text, Image, ScrollView, TextInput } from "react-native";
 import {
@@ -5,11 +6,25 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import { BellIcon, MagnifyingGlassIcon } from "react-native-heroicons/outline";
+import { getAllCategories } from "../services/api";
 import Categories from "../componets/Categories";
-import { useState } from "react";
+import Recipes from "../componets/Recipes";
 
 export default function HomeScreen() {
   const [activeCategory, setActiveCategory] = useState("Starter");
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await getAllCategories();
+        setCategories(result.categories);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
     <View className="flex-1 bg-white">
@@ -61,9 +76,14 @@ export default function HomeScreen() {
 
         <View>
           <Categories
+            categories={categories}
             activeCategory={activeCategory}
             setActiveCategory={setActiveCategory}
           />
+        </View>
+
+        <View>
+          <Recipes categories={categories} />
         </View>
       </ScrollView>
     </View>
