@@ -1,29 +1,15 @@
-import { useEffect, useState } from "react";
 import { View, Text, ScrollView, TouchableOpacity, Image } from "react-native";
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from "react-native-responsive-screen";
 import Animated, { FadeInDown } from "react-native-reanimated";
-import { getAllCategories } from "../services/api";
 
-export default function Categories({ activeCategory, setActiveCategory }) {
-  const [categories, setCategories] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const result = await getAllCategories();
-        setCategories(result.categories);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
-  }, []);
-
-  console.log("CATEGOREISSSS : ", categories);
-
+export default function Categories({
+  activeCategory,
+  setActiveCategory,
+  categories,
+}) {
   return (
     <Animated.View entering={FadeInDown.duration(500).springify()}>
       <ScrollView
