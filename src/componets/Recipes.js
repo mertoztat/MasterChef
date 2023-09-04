@@ -4,8 +4,9 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import RecipeCard from "./RecipeCard";
+import Loading from "./Loading";
 
-export default function Recipes({ recipes }) {
+export default function Recipes({ recipes, categories }) {
   return (
     <View className="mx-4 space-y-4">
       <Text
@@ -14,16 +15,20 @@ export default function Recipes({ recipes }) {
       >
         Recipes
       </Text>
-      <FlatList
-        nestedScrollEnabled={true}
-        scrollEnabled={false}
-        data={recipes.meals}
-        renderItem={({ item, index }) => (
-          <RecipeCard item={item} index={index} />
-        )}
-        // keyExtractor={(item) => item.meals.idMeal.toString()}
-        numColumns={2}
-      />
+      {recipes?.meals?.length === 0 || categories?.length === 0 ? (
+        <Loading size="large" className="mt-20" />
+      ) : (
+        <FlatList
+          nestedScrollEnabled={true}
+          scrollEnabled={false}
+          data={recipes.meals}
+          renderItem={({ item, index }) => (
+            <RecipeCard item={item} index={index} />
+          )}
+          // keyExtractor={(item) => item.meals.idMeal.toString()}
+          numColumns={2}
+        />
+      )}
     </View>
   );
 }
