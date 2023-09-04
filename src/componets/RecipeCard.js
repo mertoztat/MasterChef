@@ -1,5 +1,6 @@
 import { View, Text, Pressable, Image } from "react-native";
 import { truncateString } from "../helpers/truncateString";
+import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 
 export default function RecipeCard({ item, index }) {
   return (
@@ -10,10 +11,9 @@ export default function RecipeCard({ item, index }) {
       >
         <View className="w-full  flex justify-center flex-row overflow-hidden">
           <Image
+            style={{ height: hp(20) }}
             source={{ uri: item?.image }}
-            className={`flex-1 h-[250px] rounded-[30px] ${
-              index % 2 === 0 ? "" : "mt-4"
-            }`}
+            className={`flex-1 rounded-2xl ${index % 2 === 0 ? "" : "mt-4"}`}
           />
         </View>
         <Text className="font-semibold ml-2 text-neutral-600">
