@@ -6,13 +6,14 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import { BellIcon, MagnifyingGlassIcon } from "react-native-heroicons/outline";
-import { getAllCategories } from "../services/api";
+import { getAllCategories, getRecipes } from "../services/api";
 import Categories from "../componets/Categories";
 import Recipes from "../componets/Recipes";
 
 export default function HomeScreen() {
-  const [activeCategory, setActiveCategory] = useState("Starter");
+  const [activeCategory, setActiveCategory] = useState("Beef");
   const [categories, setCategories] = useState([]);
+  const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,6 +26,19 @@ export default function HomeScreen() {
     };
     fetchData();
   }, []);
+
+  useEffect(() => {
+    const fetchRecipes = async () => {
+      try {
+        const result = await getRecipes(activeCategory);
+        setRecipes(result);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchRecipes();
+  }, [activeCategory]);
 
   return (
     <ScrollView className="flex-1 bg-white">
@@ -79,7 +93,7 @@ export default function HomeScreen() {
         </View>
 
         <View>
-          <Recipes categories={categories} />
+          <Recipes recipes={recipes} />
         </View>
       </View>
     </ScrollView>

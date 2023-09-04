@@ -12,12 +12,12 @@ export default function RecipeCard({ item, index }) {
         <View className="w-full  flex justify-center flex-row overflow-hidden">
           <Image
             style={{ height: hp(20) }}
-            source={{ uri: item?.image }}
+            source={{ uri: item?.strMealThumb }}
             className={`flex-1 rounded-2xl ${index % 2 === 0 ? "" : "mt-4"}`}
           />
         </View>
         <Text className="font-semibold ml-2 text-neutral-600">
-          {truncateString(item?.name, 20)}
+          {truncateString(item?.strMeal, 20)}
         </Text>
       </Pressable>
     </View>
