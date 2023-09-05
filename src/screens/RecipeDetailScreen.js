@@ -8,9 +8,29 @@ import {
 } from "react-native-responsive-screen";
 import BackButton from "../componets/BackButton";
 import FavButton from "../componets/FavButton";
+import Loading from "../componets/Loading";
+import MealHeader from "../componets/MealHeader";
+import Ingredients from "../componets/Ingredients";
+import YoutubeVideo from "../componets/YoutubeVideo";
 
 export default function RecipeDetailScreen({ route }) {
-  let recipe = route.params;
+  const [recipeDetail, setRecipeDetail] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const recipe = route.params;
+
+  useEffect(() => {
+    const recipeDetail = async () => {
+      const response = await getRecipesDetail(recipe.idMeal);
+      if (!response) {
+        setLoading(true);
+      } else {
+        setRecipeDetail(response?.meals);
+        setLoading(false);
+      }
+    };
+    recipeDetail();
+  }, [recipe.idMeal]);
 
   return (
     <ScrollView
@@ -24,8 +44,8 @@ export default function RecipeDetailScreen({ route }) {
           style={{
             width: wp(100),
             height: hp(50),
-            borderBottomLeftRadius: 35,
-            borderBottomRightRadius: 35,
+            borderBottomLeftRadius: 45,
+            borderBottomRightRadius: 45,
           }}
           source={{ uri: recipe.strMealThumb }}
         />
@@ -35,6 +55,15 @@ export default function RecipeDetailScreen({ route }) {
         <BackButton />
         <FavButton />
       </View>
+
+      {loading ? (
+        <Loading size="large" className="mt-16" />
+      ) : (
+        <View>
+          <MealHeader recipe={recipe} recipeDetail={recipeDetail} />
+          <YoutubeVideo recipeDetail={recipeDetail} />
+        </View>
+      )}
     </ScrollView>
   );
 }
