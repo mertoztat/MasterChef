@@ -1,7 +1,7 @@
 import { View, Text } from "react-native";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 
-export default function MealHeader({ recipe, recipeDetail }) {
+export default function IngredientHeader({ recipe, recipeDetail }) {
   return (
     <View className="mx-4 pt-5">
       <Text

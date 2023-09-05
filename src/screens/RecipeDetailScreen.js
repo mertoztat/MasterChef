@@ -9,8 +9,7 @@ import {
 import BackButton from "../componets/BackButton";
 import FavButton from "../componets/FavButton";
 import Loading from "../componets/Loading";
-import MealHeader from "../componets/MealHeader";
-import Ingredients from "../componets/Ingredients";
+import IngredientHeader from "../componets/IngredientHeader";
 import YoutubeVideo from "../componets/YoutubeVideo";
 
 export default function RecipeDetailScreen({ route }) {
@@ -44,8 +43,8 @@ export default function RecipeDetailScreen({ route }) {
           style={{
             width: wp(100),
             height: hp(50),
-            borderBottomLeftRadius: 45,
-            borderBottomRightRadius: 45,
+            borderBottomLeftRadius: 35,
+            borderBottomRightRadius: 35,
           }}
           source={{ uri: recipe.strMealThumb }}
         />
@@ -60,7 +59,7 @@ export default function RecipeDetailScreen({ route }) {
         <Loading size="large" className="mt-16" />
       ) : (
         <View>
-          <MealHeader recipe={recipe} recipeDetail={recipeDetail} />
+          <IngredientHeader recipe={recipe} recipeDetail={recipeDetail} />
           <YoutubeVideo recipeDetail={recipeDetail} />
         </View>
       )}
