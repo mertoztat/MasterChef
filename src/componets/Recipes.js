@@ -15,7 +15,7 @@ export default function Recipes({ categories, filteredRecipes }) {
       >
         Recipes
       </Text>
-      {filteredRecipes.length === 0 || categories?.length === 0 ? (
+      {filteredRecipes?.length === 0 || categories?.length === 0 ? (
         <Loading size="large" className="mt-20" />
       ) : (
         <FlatList

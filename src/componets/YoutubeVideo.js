@@ -3,8 +3,9 @@ import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import YouTubeIframe from "react-native-youtube-iframe";
 
 export default function YoutubeVideo({ recipeDetail }) {
-  const link = recipeDetail.map((item) => item.strYoutube);
+  const link = recipeDetail?.map((item) => item.strYoutube);
 
+  const youtubeID = link?.join("").split(`https://www.youtube.com/watch?v=`)[1];
   return (
     <View>
       {link?.length > 0 && (
@@ -16,7 +17,7 @@ export default function YoutubeVideo({ recipeDetail }) {
             Recipe Video
           </Text>
           <View>
-            <YouTubeIframe videoId={link} height={hp(30)} />
+            <YouTubeIframe videoId={youtubeID} height={hp(30)} />
           </View>
         </View>
       )}
