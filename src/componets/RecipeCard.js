@@ -1,13 +1,21 @@
 import { View, Text, Pressable, Image } from "react-native";
 import { truncateString } from "../helpers/truncateString";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
+import { useNavigation } from "@react-navigation/native";
 
 export default function RecipeCard({ item, index }) {
+  const navigation = useNavigation();
+
+  const selectMealHandler = () => {
+    navigation.navigate("RecipeDetail", { ...item });
+  };
+
   return (
     <View>
       <Pressable
         key={index}
         className="w-full justify-center mb-4 space-y-1 px-1 "
+        onPress={selectMealHandler}
       >
         <View className="w-full  flex justify-center flex-row overflow-hidden">
           <Image
