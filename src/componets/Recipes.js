@@ -6,7 +6,7 @@ import {
 import RecipeCard from "./RecipeCard";
 import Loading from "./Loading";
 
-export default function Recipes({ recipes, categories }) {
+export default function Recipes({ categories, filteredRecipes }) {
   return (
     <View className="mx-4 space-y-4">
       <Text
@@ -15,13 +15,13 @@ export default function Recipes({ recipes, categories }) {
       >
         Recipes
       </Text>
-      {recipes?.meals?.length === 0 || categories?.length === 0 ? (
+      {filteredRecipes.length === 0 || categories?.length === 0 ? (
         <Loading size="large" className="mt-20" />
       ) : (
         <FlatList
           nestedScrollEnabled={true}
           scrollEnabled={false}
-          data={recipes.meals}
+          data={filteredRecipes}
           renderItem={({ item, index }) => (
             <RecipeCard item={item} index={index} />
           )}

@@ -9,11 +9,13 @@ import { BellIcon, MagnifyingGlassIcon } from "react-native-heroicons/outline";
 import { getAllCategories, getRecipes } from "../services/api";
 import Categories from "../componets/Categories";
 import Recipes from "../componets/Recipes";
+import SearchBar from "../componets/SearchBar";
 
 export default function HomeScreen() {
   const [activeCategory, setActiveCategory] = useState("Beef");
   const [categories, setCategories] = useState([]);
   const [recipes, setRecipes] = useState([]);
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,6 +41,10 @@ export default function HomeScreen() {
 
     fetchRecipes();
   }, [activeCategory]);
+
+  const filteredRecipes = recipes?.meals?.filter((recipe) =>
+    recipe.strMeal.toLowerCase().includes(query)
+  );
 
   return (
     <ScrollView className="flex-1 bg-white">
@@ -72,17 +78,7 @@ export default function HomeScreen() {
           </Text>
         </View>
 
-        <View className="mx-4 flex-row bg-black/5 items-center p-[4px] rounded-full ">
-          <TextInput
-            placeholder="Search any recipe"
-            placeholderTextColor={"gray"}
-            style={{ fontSize: hp(1.7) }}
-            className="flex-1 text-base mb-1 pl-3 tracking-wider"
-          />
-          <View className="bg-white rounded-full p-3">
-            <MagnifyingGlassIcon size={hp(2.5)} color="gray" strokeWidth={3} />
-          </View>
-        </View>
+        <SearchBar setQuery={setQuery} query={query} />
 
         <View>
           <Categories
@@ -93,7 +89,7 @@ export default function HomeScreen() {
         </View>
 
         <View>
-          <Recipes recipes={recipes} categories={categories} />
+          <Recipes filteredRecipes={filteredRecipes} categories={categories} />
         </View>
       </View>
     </ScrollView>
