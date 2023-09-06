@@ -5,8 +5,8 @@ export default function IngredientHeader({ recipe, recipeDetail }) {
   return (
     <View className="mx-4 pt-5">
       <Text
-        style={{ fontSize: hp(3) }}
-        className="font-bold flex-1 text-neutral-700"
+        style={{ fontSize: hp(3), fontFamily: "Poppins_600SemiBold" }}
+        className="flex-1 text-amber-400"
       >
         {recipe?.strMeal}
       </Text>
@@ -14,8 +14,8 @@ export default function IngredientHeader({ recipe, recipeDetail }) {
       {recipeDetail.map((item, i) => (
         <Text
           key={i}
-          style={{ fontSize: hp(1.9) }}
-          className="font-bold flex-1 text-neutral-500 mt-3"
+          style={{ fontSize: hp(1.9), fontFamily: "Poppins_400Regular" }}
+          className="flex-1 text-neutral-600/60 mt-3"
         >
           {item?.strInstructions}
         </Text>

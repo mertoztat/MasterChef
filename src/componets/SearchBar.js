@@ -4,17 +4,17 @@ import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 
 export default function SearchBar({ query, setQuery }) {
   return (
-    <View className="mx-4 flex-row bg-black/5 items-center p-[4px] rounded-full ">
+    <View className="mx-4 flex-row bg-amber-400/80 items-center  rounded-full ">
       <TextInput
         placeholder="Search any recipe"
-        placeholderTextColor={"gray"}
-        style={{ fontSize: hp(1.7) }}
-        className="flex-1 text-base mb-1 pl-3 tracking-wider"
+        placeholderTextColor={"#7c65c2"}
+        style={{ fontSize: hp(1.7), fontFamily: "Poppins_600SemiBold" }}
+        className="flex-1 text-base pl-3 text-[#7c65c2]"
         onChangeText={(query) => setQuery(query)}
         defaultValue={query}
       />
-      <View className="bg-white rounded-full p-3">
-        <MagnifyingGlassIcon size={hp(2.5)} color="gray" strokeWidth={3} />
+      <View className="bg-violet-500 rounded-full p-3.5">
+        <MagnifyingGlassIcon size={hp(2.5)} color="white" strokeWidth={3} />
       </View>
     </View>
   );

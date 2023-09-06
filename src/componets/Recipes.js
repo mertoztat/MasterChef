@@ -10,8 +10,8 @@ export default function Recipes({ categories, filteredRecipes }) {
   return (
     <View className="mx-4 space-y-4">
       <Text
-        className="font-semibold text-neutral-600"
-        style={{ fontSize: hp(2.1) }}
+        className=" text-violet-500"
+        style={{ fontSize: hp(2.1), fontFamily: "Poppins_600SemiBold" }}
       >
         Recipes
       </Text>
@@ -25,7 +25,7 @@ export default function Recipes({ categories, filteredRecipes }) {
           renderItem={({ item, index }) => (
             <RecipeCard item={item} index={index} />
           )}
-          // keyExtractor={(item) => item.meals.idMeal.toString()}
+          keyExtractor={(item) => item.idMeal.toString()}
           numColumns={2}
         />
       )}

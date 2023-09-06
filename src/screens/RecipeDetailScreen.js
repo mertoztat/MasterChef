@@ -43,8 +43,8 @@ export default function RecipeDetailScreen({ route }) {
           style={{
             width: wp(100),
             height: hp(50),
-            borderBottomLeftRadius: 35,
-            borderBottomRightRadius: 35,
+            borderBottomLeftRadius: 40,
+            borderBottomRightRadius: 40,
           }}
           source={{ uri: recipe.strMealThumb }}
         />
@@ -52,7 +52,7 @@ export default function RecipeDetailScreen({ route }) {
 
       <View className="w-full absolute flex-row justify-between items-center pt-12">
         <BackButton />
-        <FavButton />
+        <FavButton recipe={recipe} recipeDetail={recipeDetail} />
       </View>
 
       {loading ? (

@@ -2,6 +2,10 @@ import { View, Text, Pressable, Image } from "react-native";
 import { truncateString } from "../helpers/truncateString";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import { useNavigation } from "@react-navigation/native";
+import {
+  Poppins_300Light_Italic,
+  Poppins_500Medium,
+} from "@expo-google-fonts/poppins";
 
 export default function RecipeCard({ item, index }) {
   const navigation = useNavigation();
@@ -24,7 +28,10 @@ export default function RecipeCard({ item, index }) {
             className={`flex-1 rounded-2xl ${index % 2 === 0 ? "" : "mt-4"}`}
           />
         </View>
-        <Text className="font-semibold ml-2 text-neutral-600">
+        <Text
+          style={{ fontFamily: "Poppins_500Medium" }}
+          className="ml-2 text-violet-500"
+        >
           {truncateString(item?.strMeal, 20)}
         </Text>
       </Pressable>

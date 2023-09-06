@@ -14,7 +14,7 @@ export default function BackButton() {
         onPress={() => navigation.goBack()}
         className="p-2 rounded-full ml-2 bg-white"
       >
-        <ChevronLeftIcon size={hp(3.5)} strokeWidth={4} color="#fbbf24" />
+        <ChevronLeftIcon size={hp(3.5)} strokeWidth={4} color="#a78bfa" />
       </TouchableOpacity>
     </View>
   );
