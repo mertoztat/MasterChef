@@ -12,6 +12,7 @@ import {
   Poppins_600SemiBold,
   Poppins_700Bold,
 } from "@expo-google-fonts/poppins";
+import FavoriteScreen from "../screens/FavoriteScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -37,6 +38,7 @@ export default function AppNavigation() {
           <Stack.Screen name="Welcome" component={WelcomeScreen} />
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="RecipeDetail" component={RecipeDetailScreen} />
+          <Stack.Screen name="Favorite" component={FavoriteScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

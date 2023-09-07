@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { View, Text, Image, ScrollView } from "react-native";
+import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -10,17 +10,15 @@ import { getAllCategories, getRecipes } from "../services/api";
 import Categories from "../componets/Categories";
 import Recipes from "../componets/Recipes";
 import SearchBar from "../componets/SearchBar";
-import {
-  Poppins_500Medium,
-  Poppins_600SemiBold,
-  Poppins_600SemiBold_Italic,
-} from "@expo-google-fonts/poppins";
+import { useNavigation } from "@react-navigation/native";
 
 export default function HomeScreen() {
   const [activeCategory, setActiveCategory] = useState("Beef");
   const [categories, setCategories] = useState([]);
   const [recipes, setRecipes] = useState([]);
   const [query, setQuery] = useState("");
+
+  const navigation = useNavigation();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -62,7 +60,10 @@ export default function HomeScreen() {
               source={require("../../assets/images/chef.png")}
             />
           </View>
-          <BookmarkIcon size={hp(3)} color="#a78bfa" />
+
+          <TouchableOpacity onPress={() => navigation.navigate("Favorite")}>
+            <BookmarkIcon size={hp(3)} color="#a78bfa" />
+          </TouchableOpacity>
         </View>
 
         <View className="mx-4  mb-3">
