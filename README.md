@@ -5,12 +5,8 @@
 
 https://github.com/mertoztat/MasterChef/assets/75572432/af5d6bee-759d-4d3e-bdb0-06bcd3f8eef0
 
-### Features
-Users can search for hundreds of food recipes within the app.
-They can filter recipes by category, ingredient list, or cooking time.
-Users can save their favorite recipes for later access.
-They can add their own recipes, edit them, and share with the community.
-Project Setup
+
+## Project Setup
 To set up the project, follow the steps below:
 
 1-Clone the project to your computer
