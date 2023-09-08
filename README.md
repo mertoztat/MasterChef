@@ -3,7 +3,9 @@
 
 "MasterChef" is a mobile application where users can search, view, and add favorite your own food recipes. This application is built using technologies such as React Native, Redux Toolkit, NativeWind, Expo CLI, React Navigation, React Native Reanimated, and Axios.
 
-https://github.com/mertoztat/MasterChef/assets/75572432/af5d6bee-759d-4d3e-bdb0-06bcd3f8eef0
+
+
+https://github.com/mertoztat/MasterChef/assets/75572432/081938c5-4730-442b-b345-4a5e61340671
 
 
 ## Project Setup
