@@ -36,7 +36,5 @@ export const getRecipesDetail = async (id) => {
   try {
     const response = await api.get(`${RECIPES_DETAIL}${id}`);
     return response.data;
-  } catch (error) {
-    console.log("Recipe Detail Error", error);
-  }
+  } catch (error) {}
 };

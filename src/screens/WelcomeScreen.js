@@ -69,7 +69,7 @@ export default function WelcomeScreen() {
       <View className="flex items-center space-y-2">
         <Text
           style={{
-            fontSize: hp(7),
+            fontSize: hp(6),
             fontFamily: "Poppins_700Bold",
           }}
           className="text-white text-6xl  "

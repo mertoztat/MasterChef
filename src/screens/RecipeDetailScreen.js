@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { View, Text, Image, ScrollView } from "react-native";
+import { View, Image, ScrollView } from "react-native";
 import { getRecipesDetail } from "../services/api";
 import { StatusBar } from "expo-status-bar";
 import {

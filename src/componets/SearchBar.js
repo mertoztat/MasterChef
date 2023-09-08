@@ -6,6 +6,7 @@ export default function SearchBar({ query, setQuery }) {
   return (
     <View className="mx-4 flex-row bg-amber-400/80 items-center  rounded-full ">
       <TextInput
+        autoCapitalize="none"
         placeholder="Search any recipe"
         placeholderTextColor={"#7c65c2"}
         style={{ fontSize: hp(1.7), fontFamily: "Poppins_600SemiBold" }}
